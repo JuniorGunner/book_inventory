@@ -1,0 +1,2 @@
+FLASK_APP=inventory
+FLASK_ENV=development
