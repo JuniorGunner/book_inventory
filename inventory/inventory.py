@@ -1,18 +1,22 @@
-from flask import Blueprint
+from flask import Blueprint, Flask
 from .extensions import mongo
 
-main = Blueprint('main', __name__)
+# main = Blueprint('main', __name__)
+app = Flask(__name__)
 
 
-@main.route('/')
+@app.route('/')
 def index():
     book_collection = mongo.db.books
     book_collection.insert(
                             {
-                                'tittle': 'Uma Breve História do Tempo',
+                                'title': 'Uma Breve História do Tempo',
                                 'author': 'Stephen Hawking',
                                 'year': 2015,
                                 'pages': 255
                             }
                         )
     return '<h1>Added a Book!</h1>'
+
+
+app.run(debug=True)
